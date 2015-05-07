@@ -1,0 +1,30 @@
+
+
+Abstract method:
+
+1) has no body, just a semicolon
+
+class Database{
+	public abstract function connect($host);
+}
+
+2) if a class contains an abstract method, the whole class
+   must be abstract
+
+abstract class Database{
+	public abstract function connect($host);
+}
+
+3) abstract classes cannot have objects made of them
+
+$d = new Database("whatever.com"); // fatal error
+
+4) any child class which spawns objects MUST implement all parental abstract methods
+
+class OracleDatabase extends Database{
+	public function connect($h){
+	}
+}
+$o = new OracleDatabase("whatever.com"); // success
+
+5) you would create abstract methods in order to guarantee they exist in the children
